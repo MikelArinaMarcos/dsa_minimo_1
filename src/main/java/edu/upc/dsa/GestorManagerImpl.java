@@ -146,9 +146,8 @@ public class GestorManagerImpl implements GestorManager{
             logger.info("Juego: " + juego.getId() + " - Puntos: " + juego.getPuntos());
             puntuacion = puntuacion + juego.getPuntos();
             //juego.addN();
-            partida.addPedido(juego.getId(), juego);
+            partida.addPartida(juego.getId(), juego);
         }
-        partida.setPrecioT(nivel);
         cPartidas.add(partida);
         logger.info("Generada partida con id: " + partida.getId() + " - Nivel partida: " + nivel);
         u.addPartida(partida.getId(), partida);

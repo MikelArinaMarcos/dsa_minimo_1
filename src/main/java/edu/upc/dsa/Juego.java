@@ -20,7 +20,6 @@ public class Juego{
     public Juego(String descripcion, int nivelesTotales) {
         this.setId(idGenerator.getId());
         this.setDescripcion(descripcion);
-        this.setNivelesTotales(nivelesTotales);
         //this.setN(0);
     }
 
@@ -32,14 +31,6 @@ public class Juego{
         this.idJuego = id;
     }
 
-    public int getNivelesTotales() {
-        return nivelesTotales;
-    }
-
-    public void setNivelesTotales(int nivelesTotales) {
-        this.nivelesTotales = nivelesTotales;
-    }
-
     public String getDescripcion() {
         return descripcion;
     }
@@ -48,21 +39,8 @@ public class Juego{
         this.descripcion = descripcion;
     }
 
-    public int getPuntos() {
-        return 0;
+    public int getNivelesTotales() {
+        return nivelesTotales;
     }
-    /*
-    public int getN() {
-        return n;
-    }
-
-    public void setN(int n) {
-        this.n = n;
-    }
-
-    public void addN(){
-        this.n++;
-    }
-    */
 }
 

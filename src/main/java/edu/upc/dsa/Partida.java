@@ -8,7 +8,6 @@ public class Partida {
 
     String id;
     HashMap<String, Juego> juegos;
-    int precioT;
     boolean completado;
 
     public Partida() {
@@ -33,13 +32,6 @@ public class Partida {
         this.juegos = new HashMap<>();
     }
 
-    public int getPrecioT() {
-        return precioT;
-    }
-
-    public void setPrecioT(int precioT) {
-        this.precioT = precioT;
-    }
 
     public boolean isCompletado() {
         return completado;
@@ -53,11 +45,11 @@ public class Partida {
         this.completado = true;
     }
 
-    public void addJuego(String idProd, Juego juego){
-        juegos.put(idProd, juego);
+    public void addJuego(String idGame, Juego juego){
+        juegos.put(idGame, juego);
     }
 
-    public void addPedido(String id, Juego juego) {
+    public void addPartida(String id, Juego juego) {
 
     }
 }
