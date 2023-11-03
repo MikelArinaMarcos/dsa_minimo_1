@@ -1,6 +1,6 @@
 package edu.upc.dsa;
 
-import edu.upc.dsa.Exceptions.exampleNoExisteException;
+import edu.upc.dsa.Exceptions.juegoNoExisteException;
 import edu.upc.dsa.Exceptions.usuarioNoExisteException;
 
 import java.util.LinkedList;
@@ -9,9 +9,9 @@ import java.util.Map;
 
 public interface GestorManager {
 
-    public void addJuego(String nombre, int precio);
+    public void addJuego(String nombre, int nivelesTotales);
     public List<Juego> getAllProducts();
-    public Juego getJuego(String game) throws exampleNoExisteException;
+    public Juego getJuego(String game) throws juegoNoExisteException;
     public int sizeJuegos();
     public void sortList();
     public void addUser(String mail, String name, String contra) throws usuarioNoExisteException;
@@ -22,6 +22,7 @@ public interface GestorManager {
     public int sizePartida();
     public void iniciarPartida();
     //public void sortBestSellers();
-    public LinkedList<Partida> comandaCompletadaUser(Usuario u)throws usuarioNoExisteException;
+    public LinkedList<Partida> partidaCompletadaUser(Usuario u)throws usuarioNoExisteException;
 
+    List<Juego> getAllJuegos();
 }
