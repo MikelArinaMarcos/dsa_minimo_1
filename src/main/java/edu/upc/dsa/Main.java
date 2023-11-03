@@ -29,8 +29,8 @@ public class Main {
 
         beanConfig.setHost("localhost:8080");
         beanConfig.setBasePath("/dsaApp");
-        beanConfig.setContact("support@example.com");
-        beanConfig.setDescription("REST API for Minimo 1");
+        beanConfig.setContact("mikelarinamarcos@gmail.com");
+        beanConfig.setDescription("REST API del examen del Minimo 1 de DSA");
         beanConfig.setLicenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html");
         beanConfig.setResourcePackage("edu.upc.dsa.Service");
         beanConfig.setTermsOfServiceUrl("http://www.example.com/resources/eula");
@@ -56,4 +56,3 @@ public class Main {
         server.stop();
     }
 }
-
