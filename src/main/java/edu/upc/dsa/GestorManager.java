@@ -13,7 +13,11 @@ public interface GestorManager {
     public List<Juego> getAllProducts();
     public Juego getJuego(String game) throws juegoNoExisteException;
     public int sizeJuegos();
-    public void sortList();
+
+    public static void sortList() {
+        
+    }
+
     public void addUser(String mail, String name, String contra) throws usuarioNoExisteException;
     public List<Usuario> getAllUsers();
     public int sizeUsers();
@@ -25,4 +29,6 @@ public interface GestorManager {
     public LinkedList<Partida> partidaCompletadaUser(Usuario u)throws usuarioNoExisteException;
 
     List<Juego> getAllJuegos();
+
+    void finalizarPartida();
 }

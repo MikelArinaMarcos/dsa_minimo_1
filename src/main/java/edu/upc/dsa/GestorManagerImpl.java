@@ -3,7 +3,7 @@ package edu.upc.dsa;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
-import  edu.upc.dsa.Exceptions.exampleNoExisteException;
+import  edu.upc.dsa.Exceptions.juegoNoExisteException;
 import  edu.upc.dsa.Exceptions.usuarioNoExisteException;
 
 import java.util.*;
@@ -29,13 +29,28 @@ public class GestorManagerImpl implements GestorManager{
         return instance;
     }
 
-    public Juego getJuego(String prod) throws exampleNoExisteException{
+    @Override
+    public void addJuego(String nombre, int nivelesTotales) {
+
+    }
+
+    @Override
+    public List<Juego> getAllProducts() {
+        return null;
+    }
+
+    public Juego getJuego(String prod) throws juegoNoExisteException{
         for(Juego juego : lJuegos){
             if(juego.getId().equals(juego)){
                 return juego;
             }
         }
-        throw new exampleNoExisteException();
+        throw new juegoNoExisteException();
+    }
+
+    @Override
+    public int sizeJuegos() {
+        return 0;
     }
 
     // Lista de todos los juegos.
@@ -49,7 +64,7 @@ public class GestorManagerImpl implements GestorManager{
             Juego id = getJuego(idJuego);
             logger.info("Juego ya existe" + id);
         }
-        catch (exampleNoExisteException e){
+        catch (juegoNoExisteException e){
             Juego j = new Juego(idJuego, numNiveles);
             lJuegos.add(j);
         }
@@ -150,6 +165,16 @@ public class GestorManagerImpl implements GestorManager{
     public int sizePartida(){
         logger.info("Numero de partidas en la lista: " + this.cPartidas.size());
         return this.cPartidas.size();
+    }
+
+    @Override
+    public void iniciarPartida() {
+
+    }
+
+    @Override
+    public LinkedList<Partida> partidaCompletadaUser(Usuario u) throws usuarioNoExisteException {
+        return null;
     }
 }
 

@@ -1,8 +1,8 @@
-import edu.upc.dsa.Exceptions.exampleNoExisteException;
+import edu.upc.dsa.Exceptions.juegoNoExisteException;
 import edu.upc.dsa.Exceptions.usuarioNoExisteException;
-import edu.upc.dsa.Producto;
-import edu.upc.dsa.exampleManagerImpl;
-import edu.upc.dsa.exampleManager;
+import edu.upc.dsa.Juego;
+import edu.upc.dsa.GestorManagerImpl;
+import edu.upc.dsa.GestorManager;
 import org.junit.Assert;
 import org.junit.After;
 import org.junit.Before;
@@ -14,23 +14,23 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.logging.Logger;
 
-public class exampleManagerImplTest {
+public class GestorManagerImplTest {
 
-    final static Logger logger = Logger.getLogger(String.valueOf(exampleManagerImpl.class));
-    exampleManager exampleManager;
+    final static Logger logger = Logger.getLogger(String.valueOf(GestorManagerImpl.class));
+    GestorManager gestorManager;
 
     @Before
     public void setUp() throws usuarioNoExisteException {
         logger.info("--------Generando datos--------");
-        exampleManager = new exampleManagerImpl();
-        exampleManager.addProducto("Bocadillo", 3);
-        exampleManager.addProducto("Cocacola", 1);
-        exampleManager.addProducto("Croisant", 2);
+        gestorManager = new GestorManagerImpl();
+        gestorManager.addJuego("j0001", 10);
+        gestorManager.addJuego("j0002", 20);
+        gestorManager.addJuego("j0003", 30);
 
-        exampleManager.addUser("SuperPG@correo.com", "SuperPG", "TuMadre");
-        exampleManager.addUser("SuperPG@correo.com", "SuperPG", "TuMadre");
-        exampleManager.addUser("Jlarrinzal@correo.com", "Zipi", "1234");
-        exampleManager.addUser("christianL@correo.com", "Zape", "1234");
+        gestorManager.addUser("mikel@correo.com", "mikel", "arina");
+        gestorManager.addUser("arina@correo.com", "arina", "mikel");
+        gestorManager.addUser("mikelarina@correo.com", "mikelarina", "arinamikel");
+        gestorManager.addUser("mikelarinamarcos@correo.com", "mikelarinamarcos", "marcosarinamikel");
     }
 
     @After
@@ -41,43 +41,39 @@ public class exampleManagerImplTest {
     @Test
     public void testSortList(){
         logger.info("--------Sort list--------");
-        exampleManager.sortList();
-        Assert.assertEquals(3, this.exampleManager.sizeProductos());
+        GestorManager.sortList();
+        Assert.assertEquals(3, this.gestorManager.sizeJuegos());
     }
 
     @Test
     public void testLUsuarios() throws usuarioNoExisteException {
         logger.info("--------Comprobando lista usuarios--------");
-        Assert.assertEquals(3, this.exampleManager.sizeUsers());
-        Assert.assertEquals("SuperPG", exampleManager.getUser("SuperPG@correo.com").getNombre());
+        Assert.assertEquals(3, this.gestorManager.sizeUsers());
+        Assert.assertEquals("mikel", gestorManager.getUser("mikel@correo.com").getName());
     }
 
     @Test
-    public void testComanda() throws exampleNoExisteException, usuarioNoExisteException {
-        logger.info("--------Comprobando Comanda--------");
-        LinkedList<Producto> productos = new LinkedList<>();
-        productos.add(exampleManager.getProducto("Cocacola"));
-        productos.add(exampleManager.getProducto("Croisant"));
-        productos.add(exampleManager.getProducto("Bocadillo"));
-        exampleManager.getUser("christianL@correo.com");
-        exampleManager.addComanda(productos, exampleManager.getUser("christianL@correo.com"));
-        Assert.assertEquals(1, exampleManager.sizeComanda());
+    public void testComanda() throws juegoNoExisteException, usuarioNoExisteException {
+        logger.info("--------Comprobando Juego--------");
+        LinkedList<Juego> juegos = new LinkedList<>();
+        juegos.add(gestorManager.getJuego("j0001"));
+        juegos.add(gestorManager.getJuego("j0002"));
+        juegos.add(gestorManager.getJuego("j0003"));
+        gestorManager.getUser("mikel@correo.com");
+        gestorManager.addPartida(juegos, gestorManager.getUser("mikel@correo.com"));
+        Assert.assertEquals(1, gestorManager.sizePartida());
 
-        productos.clear();
-        productos.add(exampleManager.getProducto("Cocacola"));
-        productos.add(exampleManager.getProducto("Cocacola"));
-        productos.add(exampleManager.getProducto("Cocacola"));
-        productos.add(exampleManager.getProducto("Bocadillo"));
-        exampleManager.addComanda(productos, exampleManager.getUser("christianL@correo.com"));
-        Assert.assertEquals(2, exampleManager.sizeComanda());
+        juegos.clear();
+        juegos.add(gestorManager.getJuego("j0001"));
+        juegos.add(gestorManager.getJuego("j0002"));
+        juegos.add(gestorManager.getJuego("j0003"));
+        juegos.add(gestorManager.getJuego("j0004"));
+        Assert.assertEquals(2, gestorManager.sizePartida());
 
-        exampleManager.servirComanda();
-        Assert.assertEquals(1, exampleManager.sizeComanda());
+        gestorManager.finalizarPartida();
+        Assert.assertEquals(1, gestorManager.sizePartida());
 
-        logger.info("--------Best Sellers--------");
-        exampleManager.sortBestSellers();
-
-        logger.info("--------Comandas completadas--------");
-        exampleManager.comandaCompletadaUser(exampleManager.getUser("christianL@correo.com"));
+        logger.info("--------Partidas completadas--------");
+        gestorManager.partidaCompletadaUser(gestorManager.getUser("mikel@correo.com"));
     }
 }
