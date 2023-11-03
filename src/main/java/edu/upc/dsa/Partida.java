@@ -4,15 +4,15 @@ import edu.upc.dsa.util.idGenerator;
 
 import java.util.HashMap;
 
-public class Comanda {
+public class Partida {
 
     String id;
-    HashMap<String, Producto> productos;
+    HashMap<String, Juego> juegos;
     int precioT;
     boolean completado;
 
-    public Comanda() {
-        this.setProductos();
+    public Partida() {
+        this.setJuegos();
         this.setId(idGenerator.getId());
         this.setNoCompletado();
     }
@@ -25,12 +25,12 @@ public class Comanda {
         this.id = id;
     }
 
-    public HashMap<String, Producto> getProductos() {
-        return productos;
+    public HashMap<String, Juego> getProductos() {
+        return juegos;
     }
 
-    public void setProductos() {
-        this.productos = new HashMap<>();
+    public void setJuegos() {
+        this.juegos = new HashMap<>();
     }
 
     public int getPrecioT() {
@@ -53,8 +53,11 @@ public class Comanda {
         this.completado = true;
     }
 
-    public void addProducto(String idProd, Producto producto){
-        productos.put(idProd, producto);
+    public void addJuego(String idProd, Juego juego){
+        juegos.put(idProd, juego);
+    }
+
+    public void addPedido(String id, Juego juego) {
+
     }
 }
-

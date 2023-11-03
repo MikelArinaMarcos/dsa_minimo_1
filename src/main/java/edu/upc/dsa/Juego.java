@@ -5,6 +5,11 @@ import edu.upc.dsa.util.idGenerator;
 import java.util.HashMap;
 import java.util.Vector;
 
+/*
+    Defino la clase juego.
+    Tendrá un identificador de tipo String que se generará automáticamente,
+    una descripción tipo String también, y un número de niveles de tipo int.
+ */
 public class Juego{
 
     String idJuego;
@@ -41,6 +46,10 @@ public class Juego{
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public int getPuntos() {
+        return 0;
     }
     /*
     public int getN() {
