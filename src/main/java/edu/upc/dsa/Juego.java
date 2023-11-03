@@ -15,14 +15,15 @@ public class Juego{
     String idJuego;
     String descripcion;
     int nivelesTotales;
-    //int n;
 
-    public Juego(String descripcion, int nivelesTotales) {
-        this.setId(idGenerator.getId());
-        this.setDescripcion(descripcion);
-        //this.setN(0);
+    public Juego(String idJuego, String descripcion, int nivelesTotales) {
+        this.idJuego = idJuego;
+        this.descripcion = descripcion;
+        this.nivelesTotales = nivelesTotales;
     }
 
+
+    // Implementación de los getters y setters del juego
     public String getId() {
         return idJuego;
     }
@@ -41,6 +42,9 @@ public class Juego{
 
     public int getNivelesTotales() {
         return nivelesTotales;
+    }
+    public void setNivelesTotales(int nivelesTotales) {
+        this.nivelesTotales = nivelesTotales;
     }
 }
 

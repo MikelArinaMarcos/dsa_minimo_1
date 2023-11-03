@@ -59,13 +59,13 @@ public class GestorManagerImpl implements GestorManager{
     }
 
     // Creación de una partida de un juego.
-    public void addPartida(String idJuego, int numNiveles){
+    public void addPartida(String idJuego, String desc, int numNiveles){
         try{
             Juego id = getJuego(idJuego);
             logger.info("Juego ya existe" + id);
         }
         catch (juegoNoExisteException e){
-            Juego j = new Juego(idJuego, numNiveles);
+            Juego j = new Juego(idJuego, desc, numNiveles);
             lJuegos.add(j);
         }
     }
@@ -75,9 +75,9 @@ public class GestorManagerImpl implements GestorManager{
     }
 
     public void sortList(){
-        lJuegos.sort((Juego j1, Juego j2) -> Integer.compare(j1.getPuntos(),(j2.getPuntos())));
-        for(Juego producto : lJuegos){
-            logger.info("Usuario: " + producto.getId() + " - Puntos: " + producto.getPuntos());
+        lJuegos.sort((Juego j1, Juego j2) -> Integer.compare(j1.getNivelesTotales(),(j2.getNivelesTotales())));
+        for(Juego juego : lJuegos){
+            logger.info("Juego: " + juego.getId() + " - Niveles: " + juego.getNivelesTotales());
         }
     }
 /*
@@ -143,8 +143,8 @@ public class GestorManagerImpl implements GestorManager{
         Partida partida = new Partida();
         logger.info("Generando partida:");
         for(Juego juego : juegos){
-            logger.info("Juego: " + juego.getId() + " - Puntos: " + juego.getPuntos());
-            puntuacion = puntuacion + juego.getPuntos();
+            logger.info("Juego: " + juego.getId() + " - Puntos: " + juego.getNivelesTotales());
+            nivel = nivel + juego.getNivelesTotales();
             //juego.addN();
             partida.addPartida(juego.getId(), juego);
         }
