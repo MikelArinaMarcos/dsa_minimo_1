@@ -18,3 +18,8 @@ Para implementar la solución he creado 3 clases de Java: <b>Usuario.java</b>, <
 <p>
     Definido y en funcionamiento el servicio REST que permite realizar las operaciones descritas en la primera parte.
 </p>
+
+<h3>MODIFICACIONES POSTERIORES</h3>
+
+Con más tiempo he modificado todas las clases y métodos para ceñirme al 100 % a los requerido.
+<br>Además, he comentado todo el código para que sea más fácil de seguir.
